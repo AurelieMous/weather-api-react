@@ -29,11 +29,9 @@ function App() {
     // on récupère la ville dans l'input
     const handlerMeteo = (e : FormEvent) => {
         e.preventDefault();
-        console.log('handler meteo')
         const form = e.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
         const ville: string | null = formData.get('ville') as string;
-        console.log(ville.toLowerCase());
 
         checkMeteo(ville);
 
