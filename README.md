@@ -23,19 +23,27 @@ Si vous souhaitez tester ce projet en local, suivez ces étapes :
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/AurelieMous/weather-api-react.git
+   git clone https://github.com/votre-utilisateur/meteo-app.git
    cd meteo-app
    ```
 2. **Installer les dépendances**
    ```bash
    npm install
    ```
-3. **Lancer l'application**
+3. **Obtenir une API Key**
+   - Rendez-vous sur [OpenWeatherMap](https://openweathermap.org/api).
+   - Créez un compte et récupérez votre clé API.
+   - Créez un fichier `.env` à la racine du projet et ajoutez la ligne suivante :
+     ```env
+     VITE_APP_WEATHER_API_KEY=VotreApiKey
+     ```
+
+4. **Lancer l'application**
    ```bash
    npm run dev
    ```
+
 L'application sera accessible via `http://localhost:3000`.
-N'oubliez pas de vous fournir d'une clé API sur le site [openweathermap](https://openweathermap.org/api).
 
 ## 🌟 Fonctionnalités principales
 
