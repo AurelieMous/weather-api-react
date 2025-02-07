@@ -23,7 +23,7 @@ Si vous souhaitez tester ce projet en local, suivez ces étapes :
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/votre-utilisateur/meteo-app.git
+   git clone https://github.com/AurelieMous/weather-api-react.git
    cd meteo-app
    ```
 2. **Installer les dépendances**
