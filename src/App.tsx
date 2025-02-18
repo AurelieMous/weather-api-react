@@ -1,11 +1,13 @@
 
-import './App.css'
+import './App.scss'
 
 import {FormEvent, useState} from "react";
 import axios from "axios";
 import {MeteoDataProps} from "./interface.ts";
 import {FaWind} from "react-icons/fa";
 import {IoWater} from "react-icons/io5";
+import {GoSun} from "react-icons/go";
+import {BiSearch} from "react-icons/bi";
 
 function App() {
     const APIKey = import.meta.env.VITE_APP_WEATHER_API_KEY;
@@ -39,39 +41,51 @@ function App() {
 
   return (
     <>
-        <section>
-            <div className="flex">
-                <form onSubmit={handlerMeteo}>
-                    <label>Nom de la Ville</label>
+        <h1>NaoMétéo <GoSun /></h1>
+        <div className="formulaire">
+            <form onSubmit={handlerMeteo}>
+                <label>Nom de la Ville</label>
+                <div className="formulaire__inputs">
                     <input type="text"
                            name="ville"
                            className="ville"
                            id="ville"
                            required autoComplete="off"
                            placeholder="ex: Montpellier"/>
-                        <input type="submit" value="Rechercher" className="btn" />
-                </form>
-            </div>
-        </section>
-        <section className="meteo">
-            <div className="afficher-meteo" id="afficher-meteo">
-            </div>
-        </section>
+                    <button type="submit" className="btn" >
+                        <BiSearch />
+                    </button>
+                </div>
+            </form>
+        </div>
         <section>
             {meteoData ? (
-                <div className="meteo">
-                    <h1>{meteoData.name}</h1>
-                    <p>Description : {meteoData.weather[0].description}</p>
-                    <img className="img"
-                         src={`http://openweathermap.org/img/wn/${meteoData.weather[0].icon}@2x.png`}
-                         alt={meteoData.weather[0].description}
-                         title={meteoData.weather[0].description}
-                    />
-                    <p>Température : {meteoData.main.temp} °C</p>
-                    <p>Température min : {meteoData.main.temp_min} °C</p>
-                    <p>Température max : {meteoData.main.temp_max} °C</p>
-                    <p><FaWind /> {meteoData.wind.speed} km/h</p>
-                    <p> <IoWater/> {meteoData.main.humidity} %</p>
+                <div>
+                    <h2>{meteoData.name}</h2>
+                    <div className="meteo">
+                        <div className="meteo__card">
+                            <p>Description :</p>
+                            <span>{meteoData.weather[0].description}</span>
+                            <img className="img"
+                                 src={`http://openweathermap.org/img/wn/${meteoData.weather[0].icon}@2x.png`}
+                                 alt={meteoData.weather[0].description}
+                                 title={meteoData.weather[0].description}
+                            />
+                        </div>
+                        <div className="meteo__card">
+                            <p>Température :</p>
+                            <span>{meteoData.main.temp} °C</span>
+                            <p>Température min :</p>
+                            <p>{meteoData.main.temp_min} °C</p>
+                            <p>Température max :</p>
+                            <p>{meteoData.main.temp_max} °C</p>
+                        </div>
+                        <div className="meteo__card">
+                            <p><FaWind /> {meteoData.wind.speed} km/h</p>
+                            <p> <IoWater/> {meteoData.main.humidity} %</p>
+                        </div>
+
+                    </div>
                 </div>
             ) : (
                 <p>Aucune donnée météo disponible.</p>
